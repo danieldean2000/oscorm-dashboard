@@ -364,7 +364,7 @@ export default function CategoriesPage() {
                     </p>
                   </div>
                 ) : (
-                  <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {categories.map((category, index) => (
                       <motion.div
                         key={category.id}
@@ -374,38 +374,38 @@ export default function CategoriesPage() {
                         whileHover={{ scale: 1.02 }}
                       >
                         <Card className="h-full">
-                          <CardContent className="pt-6">
-                            <div className="flex items-start justify-between mb-4">
-                              <div className="flex-1">
-                                <h3 className="font-semibold text-lg mb-1">
+                          <CardContent className="pt-4 sm:pt-6">
+                            <div className="flex items-start justify-between gap-3 mb-3 sm:mb-4">
+                              <div className="flex-1 min-w-0">
+                                <h3 className="font-semibold text-base sm:text-lg mb-1.5 break-words">
                                   {category.name}
                                 </h3>
                                 <Badge variant="outline" className="text-xs">
                                   {category.slug}
                                 </Badge>
                               </div>
-                              <div className="flex gap-1">
+                              <div className="flex gap-1 shrink-0">
                                 <Button
                                   variant="ghost"
                                   size="icon"
-                                  className="h-8 w-8"
+                                  className="h-8 w-8 sm:h-9 sm:w-9"
                                   onClick={() => handleEditCategory(category)}
                                 >
-                                  <Edit className="h-3 w-3" />
+                                  <Edit className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                                 </Button>
                                 <Button
                                   variant="ghost"
                                   size="icon"
-                                  className="h-8 w-8 text-destructive hover:text-destructive"
+                                  className="h-8 w-8 sm:h-9 sm:w-9 text-destructive hover:text-destructive"
                                   onClick={() => handleDeleteCategory(category.id)}
                                   disabled={isSubmitting}
                                 >
-                                  <Trash2 className="h-3 w-3" />
+                                  <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                                 </Button>
                               </div>
                             </div>
                             {category.description && (
-                              <p className="text-sm text-muted-foreground">
+                              <p className="text-sm text-muted-foreground break-words">
                                 {category.description}
                               </p>
                             )}

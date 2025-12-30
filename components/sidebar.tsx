@@ -53,7 +53,7 @@ export function Sidebar() {
       <Button
         variant="ghost"
         size="icon"
-        className="fixed left-4 top-4 z-50 lg:hidden"
+        className="fixed left-3 top-3 sm:left-4 sm:top-4 z-50 lg:hidden h-9 w-9 sm:h-10 sm:w-10 bg-background/80 backdrop-blur-sm border shadow-sm"
         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       >
         {isMobileMenuOpen ? (
@@ -83,23 +83,23 @@ export function Sidebar() {
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.3 }}
         className={cn(
-          "fixed left-0 top-0 z-40 h-screen w-64 lg:w-72 border-r bg-card transition-transform duration-300 lg:translate-x-0",
+          "fixed left-0 top-0 z-40 h-screen w-72 sm:w-80 lg:w-72 border-r bg-card shadow-lg lg:shadow-none transition-transform duration-300 ease-in-out lg:translate-x-0",
           isMobileMenuOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         )}
       >
-        <div className="flex h-full flex-col p-4">
+        <div className="flex h-full flex-col p-3 sm:p-4 overflow-y-auto">
           {/* Logo & User Info */}
-          <div className="mb-8 px-4 pt-12 lg:pt-4">
-            <h1 className="text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+          <div className="mb-6 sm:mb-8 px-3 sm:px-4 pt-16 sm:pt-20 lg:pt-4">
+            <h1 className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
               Blog Dashboard
             </h1>
             <p className="text-xs text-muted-foreground mt-1">
               Content Management
             </p>
             {user && (
-              <div className="mt-4 flex items-center gap-3 p-3 rounded-lg bg-muted/50">
-                <Avatar>
-                  <AvatarFallback className="text-xs">
+              <div className="mt-3 sm:mt-4 flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-muted/50">
+                <Avatar className="h-8 w-8 sm:h-10 sm:w-10">
+                  <AvatarFallback className="text-xs sm:text-sm">
                     {user.name
                       .split(" ")
                       .map((n) => n[0])
@@ -107,7 +107,7 @@ export function Sidebar() {
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium truncate">{user.name}</p>
+                  <p className="text-xs sm:text-sm font-medium truncate">{user.name}</p>
                   <p className="text-xs text-muted-foreground capitalize">
                     {user.role === "blog_user" ? "Blog User" : "Admin"}
                   </p>

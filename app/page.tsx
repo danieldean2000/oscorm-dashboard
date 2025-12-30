@@ -261,10 +261,10 @@ export default function Dashboard() {
                     transition={{ duration: 0.3, delay: 0.5 + index * 0.05 }}
                     whileHover={{ x: 4 }}
                   >
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border hover:bg-muted/50 transition-colors">
-                      <div className="flex items-start sm:items-center gap-3 sm:gap-4 flex-1 min-w-0">
-                        <Avatar className="h-10 w-10 shrink-0">
-                          <AvatarFallback className="text-xs">
+                    <div className="flex flex-col gap-3 p-3 sm:p-4 rounded-lg border hover:bg-muted/50 transition-colors">
+                      <div className="flex items-start gap-3 flex-1 min-w-0">
+                        <Avatar className="h-10 w-10 sm:h-12 sm:w-12 shrink-0">
+                          <AvatarFallback className="text-xs sm:text-sm">
                             {post.author
                               .split(" ")
                               .map((n) => n[0])
@@ -272,8 +272,8 @@ export default function Dashboard() {
                           </AvatarFallback>
                         </Avatar>
                         <div className="flex-1 min-w-0">
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2">
-                            <h3 className="font-semibold text-sm sm:text-base truncate">
+                          <div className="flex flex-col gap-2">
+                            <h3 className="font-semibold text-sm sm:text-base leading-tight break-words">
                               {post.title}
                             </h3>
                             <Badge
@@ -282,17 +282,17 @@ export default function Dashboard() {
                                   ? "default"
                                   : "secondary"
                               }
-                              className="text-xs shrink-0"
+                              className="text-xs shrink-0 w-fit"
                             >
                               {post.status}
                             </Badge>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs sm:text-sm text-muted-foreground">
-                            <span className="flex items-center gap-1">
+                          <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-4 mt-2 text-xs sm:text-sm text-muted-foreground">
+                            <span className="flex items-center gap-1.5">
                               <Calendar className="h-3 w-3 shrink-0" />
-                              <span className="truncate">{post.date}</span>
+                              <span>{post.date}</span>
                             </span>
-                            <span className="flex items-center gap-1">
+                            <span className="flex items-center gap-1.5">
                               <Eye className="h-3 w-3 shrink-0" />
                               {post.views} views
                             </span>
@@ -300,15 +300,15 @@ export default function Dashboard() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 sm:gap-2 self-end sm:self-auto">
+                      <div className="flex items-center justify-end gap-1 sm:gap-2 border-t pt-3 sm:border-0 sm:pt-0">
                         <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-9 sm:w-9">
-                          <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <Edit className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-9 sm:w-9">
-                          <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-9 sm:w-9">
-                          <MoreVertical className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <MoreVertical className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </Button>
                       </div>
                     </div>

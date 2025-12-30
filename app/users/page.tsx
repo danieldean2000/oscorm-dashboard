@@ -352,7 +352,7 @@ export default function UsersPage() {
           )}
 
           {/* Stats */}
-          <div className="grid gap-4 grid-cols-1 sm:grid-cols-3">
+          <div className="grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-3">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -445,10 +445,10 @@ export default function UsersPage() {
                       transition={{ duration: 0.3, delay: index * 0.05 }}
                       whileHover={{ x: 4 }}
                     >
-                      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border hover:bg-muted/50 transition-colors">
-                        <div className="flex items-start sm:items-center gap-3 sm:gap-4 flex-1 min-w-0">
-                          <Avatar className="h-10 w-10 shrink-0">
-                            <AvatarFallback className="text-xs">
+                      <div className="flex flex-col gap-3 p-3 sm:p-4 rounded-lg border hover:bg-muted/50 transition-colors">
+                        <div className="flex items-start gap-3 flex-1 min-w-0">
+                          <Avatar className="h-10 w-10 sm:h-12 sm:w-12 shrink-0">
+                            <AvatarFallback className="text-xs sm:text-sm">
                               {user.name
                                 .split(" ")
                                 .map((n) => n[0])
@@ -456,8 +456,8 @@ export default function UsersPage() {
                             </AvatarFallback>
                           </Avatar>
                           <div className="flex-1 min-w-0">
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                              <h3 className="font-semibold text-sm sm:text-base truncate">
+                            <div className="flex flex-col gap-2">
+                              <h3 className="font-semibold text-sm sm:text-base break-words">
                                 {user.name}
                               </h3>
                               <div className="flex items-center gap-2 flex-wrap">
@@ -481,14 +481,14 @@ export default function UsersPage() {
                                 </Badge>
                               </div>
                             </div>
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs sm:text-sm text-muted-foreground">
-                              <span className="truncate">{user.email}</span>
+                            <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-4 mt-2 text-xs sm:text-sm text-muted-foreground">
+                              <span className="break-all sm:break-normal">{user.email}</span>
                               <span>{user.posts} posts</span>
                               <span>Joined {user.joined}</span>
                             </div>
                           </div>
                         </div>
-                        <div className="flex items-center gap-1 sm:gap-2 self-end sm:self-auto">
+                        <div className="flex items-center justify-end gap-1 sm:gap-2 border-t pt-3 sm:border-0 sm:pt-0">
                           <Button 
                             variant="ghost" 
                             size="icon" 
@@ -496,7 +496,7 @@ export default function UsersPage() {
                             onClick={() => handleOpenDialog(user)}
                             disabled={isSubmitting}
                           >
-                            <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <Edit className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                           </Button>
                           <Button 
                             variant="ghost" 
@@ -505,7 +505,7 @@ export default function UsersPage() {
                             onClick={() => handleDeleteUser(user.id)}
                             disabled={isSubmitting}
                           >
-                            <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                           </Button>
                         </div>
                       </div>
@@ -521,7 +521,7 @@ export default function UsersPage() {
 
           {/* Create/Edit User Dialog */}
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-            <DialogContent className="sm:max-w-[500px]">
+            <DialogContent className="max-w-[95vw] sm:max-w-[500px] max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>
                   {editingUser ? "Edit User" : "Add New User"}
@@ -573,7 +573,7 @@ export default function UsersPage() {
                     required={!editingUser}
                   />
                 </div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="role">Role</Label>
                     <Select

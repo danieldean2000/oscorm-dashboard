@@ -141,22 +141,23 @@ export default function PostsPage() {
 
           {/* Search and Filter */}
           <Card>
-            <CardContent className="pt-6">
-              <div className="flex flex-col sm:flex-row gap-4">
+            <CardContent className="pt-4 sm:pt-6">
+              <div className="flex flex-col gap-3 sm:gap-4">
                 <div className="relative flex-1">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input
                     placeholder="Search posts..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 w-full"
                   />
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-2 flex-wrap">
                   <Button
                     variant={filterStatus === "all" ? "default" : "outline"}
                     size="sm"
                     onClick={() => setFilterStatus("all")}
+                    className="flex-1 sm:flex-initial min-w-[80px]"
                   >
                     All
                   </Button>
@@ -164,6 +165,7 @@ export default function PostsPage() {
                     variant={filterStatus === "published" ? "default" : "outline"}
                     size="sm"
                     onClick={() => setFilterStatus("published")}
+                    className="flex-1 sm:flex-initial min-w-[100px]"
                   >
                     Published
                   </Button>
@@ -171,6 +173,7 @@ export default function PostsPage() {
                     variant={filterStatus === "draft" ? "default" : "outline"}
                     size="sm"
                     onClick={() => setFilterStatus("draft")}
+                    className="flex-1 sm:flex-initial min-w-[80px]"
                   >
                     Draft
                   </Button>
@@ -214,10 +217,10 @@ export default function PostsPage() {
                     transition={{ duration: 0.3, delay: index * 0.05 }}
                     whileHover={{ x: 4 }}
                   >
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg border hover:bg-muted/50 transition-colors">
-                      <div className="flex items-start sm:items-center gap-3 sm:gap-4 flex-1 min-w-0">
-                        <Avatar className="h-10 w-10 shrink-0">
-                          <AvatarFallback className="text-xs">
+                    <div className="flex flex-col gap-3 p-3 sm:p-4 rounded-lg border hover:bg-muted/50 transition-colors">
+                      <div className="flex items-start gap-3 flex-1 min-w-0">
+                        <Avatar className="h-10 w-10 sm:h-12 sm:w-12 shrink-0">
+                          <AvatarFallback className="text-xs sm:text-sm">
                             {post.author_name
                               ?.split(" ")
                               .map((n) => n[0])
@@ -225,8 +228,8 @@ export default function PostsPage() {
                           </AvatarFallback>
                         </Avatar>
                         <div className="flex-1 min-w-0">
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-2">
-                            <h3 className="font-semibold text-sm sm:text-base truncate">
+                          <div className="flex flex-col gap-2">
+                            <h3 className="font-semibold text-sm sm:text-base leading-tight break-words">
                               {post.title}
                             </h3>
                             <div className="flex items-center gap-2 flex-wrap">
@@ -247,16 +250,16 @@ export default function PostsPage() {
                               )}
                             </div>
                           </div>
-                          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs sm:text-sm text-muted-foreground">
+                          <div className="flex flex-col gap-1.5 sm:flex-row sm:items-center sm:gap-4 mt-2 text-xs sm:text-sm text-muted-foreground">
                             {post.created_at && (
-                              <span className="flex items-center gap-1">
+                              <span className="flex items-center gap-1.5">
                                 <Calendar className="h-3 w-3 shrink-0" />
-                                <span className="truncate">
+                                <span>
                                   {new Date(post.created_at).toLocaleDateString()}
                                 </span>
                               </span>
                             )}
-                            <span className="flex items-center gap-1">
+                            <span className="flex items-center gap-1.5">
                               <Eye className="h-3 w-3 shrink-0" />
                               {post.views || 0} views
                             </span>
@@ -266,10 +269,10 @@ export default function PostsPage() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-1 sm:gap-2 self-end sm:self-auto">
+                      <div className="flex items-center justify-end gap-1 sm:gap-2 border-t pt-3 sm:border-0 sm:pt-0">
                         <Link href={`/posts/edit/${post.id}`}>
                           <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-9 sm:w-9">
-                            <Edit className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <Edit className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                           </Button>
                         </Link>
                         <Button 
@@ -278,10 +281,10 @@ export default function PostsPage() {
                           className="h-8 w-8 sm:h-9 sm:w-9"
                           onClick={() => post.id && handleDelete(post.id)}
                         >
-                          <Trash2 className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <Trash2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </Button>
                         <Button variant="ghost" size="icon" className="h-8 w-8 sm:h-9 sm:w-9">
-                          <MoreVertical className="h-3 w-3 sm:h-4 sm:w-4" />
+                          <MoreVertical className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         </Button>
                       </div>
                     </div>
